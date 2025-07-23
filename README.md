@@ -10,7 +10,7 @@
 
 1. **Клонируйте репозиторий и перейдите в папку проекта:**
    ```bash
-   git clone <ваш-репозиторий>
+   git clone https://github.com/usenam1ng/SalaryView
    cd SalaryView
    ```
 2. **Создайте и активируйте виртуальное окружение (рекомендуется):**
@@ -20,7 +20,7 @@
    ```
 3. **Установите зависимости:**
    ```bash
-   pip install -r requirements.txt
+   pip install -r requirements.txt (pip3 для macos)
    ```
 4. **Запустите сервер:**
    ```bash
@@ -53,13 +53,6 @@
   "update_salary_at": "2024-12-01"
 }
 ```
-**Ответ:**
-```json
-{
-  "ok": true,
-  "user_id": 1
-}
-```
 
 ### 2. Авторизация (получение токена)
 **POST** `/users/login`
@@ -71,20 +64,13 @@
   "password": "1234"
 }
 ```
-**Ответ:**
-```json
-{
-  "access_token": "<ваш_токен>",
-  "token_type": "bearer"
-}
-```
 
 ### 3. Получение информации о зарплате
 **GET** `/users/me/salary`
 
 **Требуется авторизация!**
 
-В Swagger UI нажмите "Authorize" (замочек), вставьте токен в формате:
+В Swagger UI нажмите "Authorize" (иконка замочка справа сверху блока с запросом), вставьте токен в формате:
 ```
 Bearer <ваш_токен>
 ```
@@ -107,26 +93,3 @@ Bearer <ваш_токен>
 - **Токен:** Получайте токен через `/users/login` и вставляйте его в поле Authorize (Swagger UI) или в заголовок `Authorization` ваших запросов.
 - **Swagger UI:** Для авторизации используйте только поле Bearer-токена (замочек справа вверху).
 - **Пароли:** Хранятся в базе только в захешированном виде.
-
----
-
-## Примеры запросов
-
-### Получить токен через curl
-```bash
-curl -X POST http://127.0.0.1:8000/users/login \
-  -H "Content-Type: application/json" \
-  -d '{"username": "ivan", "password": "1234"}'
-```
-
-### Получить зарплату через curl
-```bash
-curl -X GET http://127.0.0.1:8000/users/me/salary \
-  -H "Authorization: Bearer <ваш_токен>"
-```
-
----
-
-## Лицензия
-
-MIT 
