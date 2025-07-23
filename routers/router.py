@@ -1,8 +1,8 @@
 import typing
-from schemas import SUser, SUserId, SUserAdd, SToken
+from database.schemas import SUser, SUserId, SUserAdd, SToken
 from fastapi import Depends, APIRouter, HTTPException, status
-from repo import UserRepository
-from auth import verify_password, create_access_token, decode_access_token
+from database.repo import UserRepository
+from authorization.auth import verify_password, create_access_token, decode_access_token
 from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
 from pydantic import BaseModel
 

@@ -1,7 +1,7 @@
-from database import new_session, UserTable
-from schemas import SUserAdd, SUser
+from database.database import new_session, UserTable
+from database.schemas import SUserAdd, SUser
 from sqlalchemy import select
-from auth import get_password_hash
+from authorization.auth import get_password_hash
 
 class UserRepository:
     @classmethod

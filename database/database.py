@@ -1,10 +1,15 @@
 from sqlalchemy.ext.asyncio import create_async_engine, async_sessionmaker
 from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column
-from typing import Optional
 from datetime import date
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
+
+DATABASE_URL = os.getenv("DATABASE_URL", "sqlite+aiosqlite:///users.db")
 
 dbengine = create_async_engine(
-    "sqlite+aiosqlite:///users.db"
+    DATABASE_URL
 )
 
 new_session = async_sessionmaker(dbengine, expire_on_commit=False)
@@ -24,6 +29,6 @@ async def create_tables():
     async with dbengine.begin() as conn:
         await conn.run_sync(Model.metadata.create_all)
 
-async def delete_tables():
-    async with dbengine.begin() as conn:
-        await conn.run_sync(Model.metadata.drop_all)
+# async def delete_tables():
+#     async with dbengine.begin() as conn:
+#         await conn.run_sync(Model.metadata.drop_all)
