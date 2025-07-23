@@ -8,7 +8,7 @@
    git clone https://github.com/usenam1ng/SalaryView
    cd SalaryView
    ```
-2. **Далее необходимо создать файл .env на основе примера:**
+2. **Далее необходимо создать файл .env на основе примера. Необходимо указать секретный ключ шифрования и url базы:**
    ```bash
    cp .env.example .env
    ```
