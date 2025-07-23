@@ -1,32 +1,25 @@
-# SalaryView — сервис просмотра зарплаты сотрудников
+# SalaryView — сервис просмотра зарплаты сотрудников, реализованный при помощи FastAPI
 
-## Описание
 
-**SalaryView** — это REST-сервис на FastAPI для просмотра текущей зарплаты и даты следующего повышения. Каждый сотрудник может видеть только свою зарплату. Для безопасности реализована авторизация по JWT-токену.
-
----
-
-## Быстрый старт
+## Начало
 
 1. **Клонируйте репозиторий и перейдите в папку проекта:**
    ```bash
    git clone https://github.com/usenam1ng/SalaryView
    cd SalaryView
    ```
-2. **Создайте и активируйте виртуальное окружение (рекомендуется):**
+2. **Создайте файл .env на основе примера:
    ```bash
-   python3 -m venv venv
-   source venv/bin/activate
+   cp .env.example .env
    ```
-3. **Установите зависимости:**
+
+3. **Запуск через Docker:
    ```bash
-   pip install -r requirements.txt (pip3 для macos)
+   docker build -t salaryview .
+   docker run --env-file .env -p 8000:8000 salaryview
    ```
-4. **Запустите сервер:**
-   ```bash
-   uvicorn main:app --reload
-   ```
-5. **Откройте документацию:**
+
+4. **Откройте документацию:
    - Swagger UI: [http://127.0.0.1:8000/docs](http://127.0.0.1:8000/docs)
 
 ---
